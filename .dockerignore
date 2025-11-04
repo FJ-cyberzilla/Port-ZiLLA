@@ -1,0 +1,161 @@
+# Port-ZiLLA Enterprise Docker Ignore Rules
+
+# Git
+.git
+.gitignore
+.gitattributes
+.github/
+
+# Documentation
+README.md
+LICENSE
+SECURITY.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+CHANGELOG.md
+
+# Rust build artifacts
+/target/
+Cargo.lock
+Cargo.toml
+
+# Source code (we copy it explicitly)
+/src/
+
+# Configuration (we copy specific config files)
+/config/
+!config/default.toml
+
+# Development and test files
+/tests/
+/benches/
+/examples/
+/scripts/
+
+# Logs and temporary files
+/logs/
+/tmp/
+/temp/
+*.log
+*.tmp
+
+# Database and data files
+/data/
+/backups/
+*.db
+*.db-*
+
+# Exports and outputs
+/exports/
+/reports/
+/output/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Coverage reports
+/coverage/
+
+# Build artifacts
+/dist/
+/pkg/
+/build/
+
+# Docker compose and development
+docker-compose.yml
+docker-compose.override.yml
+.dockerignore
+Dockerfile*
+
+# Rust cache
+.cargo/
+.cache/
+
+# Documentation
+/docs/
+/book/
+
+# Test data
+/test-data/
+/fixtures/
+
+# Personal development files
+/personal/
+/dev/
+
+# Secrets (never include in Docker context)
+*_key
+*_token
+*_secret
+*_password
+*.key
+*.pem
+*.crt
+*.cert
+
+# Large files
+*.tar.gz
+*.zip
+*.7z
+
+# Benchmark data
+/benches/data/
+
+# Performance profiles
+*.perf
+*.flamegraph
+
+# Package files
+*.tar
+*.gz
+*.bz2
+
+# Node.js files (if any)
+node_modules/
+package.json
+package-lock.json
+
+# Python files (if any)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+
+# Local development
+.local*/
+
+# Backup of ignored files
+*/.ignore
+
+# Keep these files for Docker build
+!Cargo.toml
+!Cargo.lock
+!src/
+!config/default.toml
+!.env.example
+!Dockerfile
+!docker-compose.yml
