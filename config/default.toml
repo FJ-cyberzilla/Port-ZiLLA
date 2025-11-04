@@ -1,0 +1,94 @@
+# Port-ZiLLA Enterprise Configuration
+# Default configuration file
+
+[scanner]
+# Connection timeout in milliseconds
+default_timeout_ms = 1000
+# Maximum concurrent threads for scanning
+max_threads = 200
+# Ports to scan per batch
+chunk_size = 100
+# Enable SYN scanning (requires root privileges)
+syn_scan_enabled = false
+# Enable UDP scanning
+udp_scan_enabled = false
+# Rate limit in scans per second (optional)
+rate_limit = null
+# Enable stealth mode
+stealth_mode = false
+# Enable service detection
+enable_service_detection = true
+# Enable banner grabbing
+enable_banner_grabbing = true
+# Enable OS detection
+enable_os_detection = false
+# Enable traceroute
+enable_traceroute = false
+
+[database]
+# Database connection string
+connection_string = "sqlite:portzilla.db"
+# Maximum database connections
+max_connections = 20
+# Enable automatic database migrations
+enable_migrations = true
+# Enable automatic backups
+backup_enabled = true
+# Backup interval in hours
+backup_interval_hours = 24
+
+[export]
+# Default export format
+default_format = "json"
+# Auto-export scans after completion
+auto_export = false
+# Output directory for exports
+output_directory = "exports"
+# Include timestamps in filenames
+include_timestamps = true
+# Compress export files
+compress_exports = false
+
+[security]
+# List of allowed targets (empty = all targets allowed)
+allowed_targets = []
+# Maximum ports per scan
+max_ports_per_scan = 65535
+# Require authentication for API access
+require_authentication = false
+# Enable rate limiting
+rate_limiting_enabled = true
+# Maximum scans per hour per user
+max_scans_per_hour = 10
+
+[logging]
+# Log level: error, warn, info, debug, trace
+level = "info"
+# Log format: simple, detailed, json
+format = "detailed"
+# Enable file logging
+enable_file_logging = true
+# Log directory
+log_directory = "logs"
+# Maximum log file size in MB
+max_log_size_mb = 100
+
+[ui]
+# Color scheme: dark, light, auto
+color_scheme = "dark"
+# Show animations during scans
+show_animations = true
+# Enable progress bars
+progress_bars_enabled = true
+# Show detailed output
+detailed_output = true
+
+[api]
+# Enable REST API server
+enabled = false
+# API server bind address
+bind_address = "127.0.0.1:8080"
+# Enable API authentication
+auth_enabled = true
+# Default API key (change in production!)
+default_api_key = "portzilla-default-key-2024"
