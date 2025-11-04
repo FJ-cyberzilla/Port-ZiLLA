@@ -1,0 +1,110 @@
+use crate::error::Result;
+use std::net::IpAddr;
+use std::time::Duration;
+use tracing::{debug, info};
+
+#[derive(Debug, Clone)]
+pub struct OsInfo {
+    pub name: String,
+    pub version: Option<String>,
+    pub device_type: Option<String>,
+    pub accuracy: u8,
+}
+
+pub struct OsDetector {
+    tcp_timeout: Duration,
+}
+
+impl OsDetector {
+    pub fn new() -> Self {
+        Self {
+            tcp_timeout: Duration::from_secs(2),
+        }
+    }
+
+    pub async fn detect_os(&self, target: IpAddr) -> Result<OsInfo> {
+        debug!("Starting OS detection for {}", target);
+        
+        // Note: Real OS detection requires TCP/IP stack fingerprinting
+        // This is a simplified version that uses common techniques
+        
+        let tcp_signatures = self.analyze_tcp_behavior(target).await?;
+        
+        // For now, return a generic detection
+        // In a real implementation, this would analyze TCP window sizes, TTL, etc.
+        
+        info!("OS detection completed for {}", target);
+        
+        Ok(OsInfo {
+            name: "Unknown".to_string(),
+            version: None,
+            device_type: Some("Network Device".to_string()),
+            accuracy: 50, // Low accuracy for generic detection
+        })
+    }
+
+    async fn analyze_tcp_behavior(&self, target: IpAddr) -> Result<HashMap<String, String>> {
+        let mut signatures = HashMap::new();
+        
+        // Common ports to probe for OS detection
+        let test_ports = vec![22, 80, 443, 21, 25];
+        
+        for port in test_ports {
+            if let Ok(behavior) = self.probe_tcp_behavior(target, port).await {
+                signatures.insert(format!("port_{}", port), behavior);
+            }
+        }
+        
+        Ok(signatures)
+    }
+
+    async fn probe_tcp_behavior(&self, target: IpAddr, port: u16) -> Result<String> {
+        use tokio::net::TcpStream;
+        use std::time::Instant;
+        
+        let start = Instant::now();
+        match tokio::time::timeout(self.tcp_timeout, TcpStream::connect((target, port))).await {
+            Ok(Ok(_stream)) => {
+                let connect_time = start.elapsed();
+                Ok(format!("open_{}ms", connect_time.as_millis()))
+            }
+            Ok(Err(_)) => Ok("closed".to_string()),
+            Err(_) => Ok("timeout".to_string()),
+        }
+    }
+
+    pub async fn ttl_based_detection(&self, target: IpAddr) -> Result<OsInfo> {
+        // TTL-based OS detection (simplified)
+        // Different OSes have different default TTL values
+        let default_ttl = self.get_ttl(target).await?;
+        
+        let (name, accuracy) = match default_ttl {
+            64 => ("Linux/Unix", 70),
+            128 => ("Windows", 75),
+            255 => ("Cisco/Network Device", 80),
+            60 => ("MacOS", 65),
+            _ => ("Unknown", 50),
+        };
+
+        Ok(OsInfo {
+            name: name.to_string(),
+            version: None,
+            device_type: Some("Computer".to_string()),
+            accuracy,
+        })
+    }
+
+    async fn get_ttl(&self, _target: IpAddr) -> Result<u8> {
+        // In a real implementation, this would send ICMP packets and analyze TTL
+        // For now, return a placeholder
+        Ok(64) // Common Linux TTL
+    }
+}
+
+impl Default for OsDetector {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+use std::collections::HashMap;
