@@ -1,3 +1,4 @@
+# Multi-stage build for Port-ZiLLA Enterprise
 FROM rust:1.70 as builder
 
 # Install required system dependencies
@@ -11,8 +12,8 @@ WORKDIR /app
 # Copy source code
 COPY . .
 
-# Build the application
-RUN cargo build --release
+# Build the application with all features
+RUN cargo build --release --features full
 
 # Runtime stage
 FROM debian:bookworm-slim
