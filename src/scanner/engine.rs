@@ -96,7 +96,7 @@ impl ScanEngine {
         let ports = self.get_ports_to_scan(&scan_type);
         let total_ports = ports.len() as u16;
 
-        let (result_tx, result_rx) = mpsc::channel(1000);
+        let (result_tx, _) = mpsc::channel(1000);
         let progress_tx = Arc::new(RwLock::new(progress_tx));
 
         // Scan ports with progress reporting
