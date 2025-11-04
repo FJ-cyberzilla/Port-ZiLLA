@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  portzilla:
+    build: .
+    ports:
+      - "8080:8080"  # API port
+    volumes:
+      - ./data:/app/data          # Database and persistent data
+      - ./exports:/app/exports    # Scan exports
+      - ./logs:/app/logs          # Application logs
+      - ./config:/app/config      # Custom configuration
+    environment:
+      - RUST_LOG=info
+      - DATABASE_URL=sqlite:/app/data/portzilla.db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "portzilla", "health-check"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add PostgreSQL for production use
+  # postgres:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: portzilla
+  #     POSTGRES_USER: portzilla
+  #     POSTGRES_PASSWORD: change-in-production
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+
+volumes:
+  postgres_data:
