@@ -1,0 +1,146 @@
+# Port-ZiLLA Enterprise Git Ignore Rules
+
+# Compiled binaries
+/target/
+**/*.rs.bk
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+/data/
+/backups/
+
+# Exports and outputs
+/exports/
+/reports/
+/output/
+
+# Logs
+/logs/
+*.log
+*.log.*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Temporary files
+/tmp/
+/temp/
+*.tmp
+*.temp
+
+# Coverage reports
+/coverage/
+*.lcov
+
+# Profiling data
+*.profraw
+*.profdata
+
+# Build artifacts
+/dist/
+/pkg/
+/build/
+
+# Docker
+.docker/
+
+# MacOS
+*.dmg
+
+# Windows
+*.exe
+*.msi
+
+# Linux
+*.AppImage
+*.deb
+*.rpm
+
+# Configuration overrides
+config/local.toml
+config/development.toml
+config/production.toml
+
+# Cache directories
+.cargo/
+.cache/
+
+# Rust specific
+Cargo.lock
+
+# Documentation build
+/docs/_build/
+
+# Test data
+/test-data/
+/fixtures/
+
+# Personal development files
+/personal/
+/dev/
+
+# Secrets (should never be committed)
+*_key
+*_token
+*_secret
+*_password
+*.key
+*.pem
+*.crt
+*.cert
+
+# Large files
+*.tar.gz
+*.zip
+*.7z
+
+# Benchmark data
+/benches/data/
+
+# Performance profiles
+*.perf
+*.flamegraph
+
+# Package files
+*.tar
+*.gz
+*.bz2
+
+# Lock files (except Cargo.lock which should be committed)
+package-lock.json
+yarn.lock
+composer.lock
+Gemfile.lock
+Pipfile.lock
+
+# Local development
+.local*/
+!.local.example
+
+# Backup of ignored files
+*/.ignore
