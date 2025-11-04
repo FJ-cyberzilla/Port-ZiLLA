@@ -30,32 +30,28 @@ tracing = "0.1"
 tracing-subscriber = "0.3"
 async-trait = "0.1"
 
-# CLI dependencies
-clap = { version = "4.0", features = ["derive"] }
-colored = "2.0"
-indicatif = "0.17"
-dialoguer = "0.10"
+# CLI dependencies - FIXED: Made clap optional for the cli feature
+clap = { version = "4.0", features = ["derive"], optional = true }
+colored = { version = "2.0", optional = true }
+indicatif = { version = "0.17", optional = true }
+dialoguer = { version = "0.10", optional = true }
 
 # Database dependencies
 sqlx = { version = "0.7", features = ["sqlite", "runtime-tokio", "macros"] }
 rusqlite = "0.29"
 
 # Network dependencies
-pnet = "0.34"
+pnet = { version = "0.34", optional = true }
 
 # Export dependencies
-csv = "1.2"
-quick-xml = "0.30"
+csv = { version = "1.2", optional = true }
+quick-xml = { version = "0.30", optional = true }
 
 # Utility dependencies
 chrono = { version = "0.4", features = ["serde"] }
 uuid = { version = "1.0", features = ["v4", "serde"] }
 regex = "1.0"
 rayon = "1.7"
-
-# Web dependencies (optional - for future API)
-# warp = "0.3"
-# serde_qs = "0.11"
 
 [dev-dependencies]
 rstest = "0.18"
