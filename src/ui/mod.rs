@@ -14,7 +14,7 @@ impl PortZiLLAUI {
     pub fn print_banner() {
         println!();
         println!("{}", "╔══════════════════════════════════════════════════════════════════════════════╗".bright_yellow());
-        println!("{}", "║                            PORT-ZILLA ENTERPRISE                           ║".bright_yellow().bold());
+        println!("{}", "║                            PORT-ZILLA ENTERPRISE                                           ║".bright_yellow().bold());
         println!("{}", "╚══════════════════════════════════════════════════════════════════════════════╝".bright_yellow());
         println!();
         
@@ -40,7 +40,7 @@ impl PortZiLLAUI {
 
     pub fn print_menu() {
         println!("{}", "╔══════════════════════════════════════════════════════════╗".bright_yellow());
-        println!("{}", "║                      MAIN MENU                       ║".bright_yellow().bold());
+        println!("{}", "║                      MAIN MENU                                     ║".bright_yellow().bold());
         println!("{}", "╚══════════════════════════════════════════════════════════╝".bright_yellow());
         println!();
         
@@ -74,7 +74,7 @@ impl PortZiLLAUI {
     pub fn print_help() {
         println!();
         println!("{}", "╔══════════════════════════════════════════════════════════╗".bright_yellow());
-        println!("{}", "║                      HELP & USAGE                      ║".bright_yellow().bold());
+        println!("{}", "║                      HELP & USAGE                                  ║".bright_yellow().bold());
         println!("{}", "╚══════════════════════════════════════════════════════════╝".bright_yellow());
         println!();
         
@@ -101,7 +101,7 @@ impl PortZiLLAUI {
     pub fn print_scan_start(target: &str, scan_type: &str) {
         println!();
         println!("{}", "╔══════════════════════════════════════════════════════════╗".bright_yellow());
-        println!("{}", "║                      SCAN STARTED                      ║".bright_yellow().bold());
+        println!("{}", "║                      SCAN STARTED                                   ║".bright_yellow().bold());
         println!("{}", "╚══════════════════════════════════════════════════════════╝".bright_yellow());
         println!();
         println!("  {}  {}", "🎯 Target:".bright_cyan(), target.bright_white().bold());
@@ -115,7 +115,7 @@ impl PortZiLLAUI {
     pub fn print_scan_complete(open_ports: usize, duration: std::time::Duration) {
         println!();
         println!("{}", "╔══════════════════════════════════════════════════════════╗".bright_green());
-        println!("{}", "║                      SCAN COMPLETE                     ║".bright_green().bold());
+        println!("{}", "║                      SCAN COMPLETE                                 ║".bright_green().bold());
         println!("{}", "╚══════════════════════════════════════════════════════════╝".bright_green());
         println!();
         println!("  {}  {}", "✅ Open Ports Found:".bright_cyan(), open_ports.to_string().bright_green().bold());
