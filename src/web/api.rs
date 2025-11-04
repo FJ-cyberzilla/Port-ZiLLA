@@ -143,8 +143,8 @@ impl ApiServer {
         
         tokio::spawn(async move {
             match scan_engine.scan(&target, scan_type_clone).await {
-                Ok(scan_result) => {
-                    info!("Scan completed successfully: {}", scan_result.id);
+                Ok(ScanResult { id, .. }) => {
+                    info!("Scan completed successfully: {}", id);
                     // Save to repository, etc.
                 }
                 Err(e) => {
