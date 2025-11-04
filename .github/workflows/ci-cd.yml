@@ -396,7 +396,7 @@ jobs:
         docker-compose logs
         docker-compose down
 
-  # Notifications
+  # Notifications - FIXED VERSION
   notify:
     name: Notify Status
     runs-on: ubuntu-latest
@@ -405,19 +405,25 @@ jobs:
     
     steps:
     - name: Notify Slack on failure
-      if: failure()
+      if: failure() && github.ref == 'refs/heads/main'
       uses: 8398a7/action-slack@v3
       with:
         status: failure
         channel: '#ci-cd'
-        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        text: 'Port-ZiLLA CI/CD Pipeline Failed on Main Branch'
+        username: 'Port-ZiLLA Bot'
+        icon_emoji: ':no_entry:'
       env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         
-    - name: Notify on success
-      if: success()
+    - name: Notify Slack on success
+      if: success() && github.ref == 'refs/heads/main'
       uses: 8398a7/action-slack@v3
       with:
         status: success
         channel: '#ci-cd'
-        webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        text: 'Port-ZiLLA CI/CD Pipeline Succeeded on Main Branch'
+        username: 'Port-ZiLLA Bot'
+        icon_emoji: ':white_check_mark:'
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
