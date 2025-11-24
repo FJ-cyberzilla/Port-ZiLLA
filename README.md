@@ -4,10 +4,9 @@
 
 [![Rust](https://img.shields.io/badge/Rust-1.70%2B-orange?logo=rust)](https://www.rust-lang.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Security](https://img.shields.io/badge/Security-Production%20Ready-brightgreen)](SECURITY.md)
-[![CodeQL Analysis](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/codeql-analysis.yml/badge.svg)]
-## 🚀 Features
-[![Codacy Security Scan](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/codacy.yml/badge.svg)](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/codacy.yml)
+[![Security](https://img.shields.io/badge/Security-Production%20Ready-brightgreen)](SECURITY.md)[![Codacy Security Scan](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/codacy.yml/badge.svg)](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/codacy.yml)
+
+## Specifications
 ### Core Scanning
 - **Multi-threaded port scanning** with configurable timeouts
 - **Multiple scan types**: Quick (100 ports), Standard (1000 ports), Full (all ports), Custom ranges
