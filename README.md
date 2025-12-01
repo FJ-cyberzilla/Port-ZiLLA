@@ -4,7 +4,7 @@
 
 [![Rust](https://img.shields.io/badge/Rust-1.70%2B-orange?logo=rust)](https://www.rust-lang.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![Security](https://img.shields.io/badge/Security-Production%20Ready-brightgreen)](SECURITY.md)[![Codacy Security Scan](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/codacy.yml/badge.svg)](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/codacy.yml)
+[![Security](https://img.shields.io/badge/Security-Production%20Ready-brightgreen)](SECURITY.md)[![Codacy Security Scan](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/codacy.yml/badge.svg)](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/codacy.yml)[![Dependabot Updates](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/FJ-cyberzilla/Port-ZiLLA/actions/workflows/dependabot/dependabot-updates)
 
 ## Specifications
 ### Core Scanning
